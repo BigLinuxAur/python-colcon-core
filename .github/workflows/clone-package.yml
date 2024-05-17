@@ -49,7 +49,7 @@ jobs:
           cd $gitfolder
           # sed -i "/depends=/s/)/ \'xpto\')/" PKGBUILD
           # sed -i "/makedepends=/s/)/ \'xpto\')/" PKGBUILD
-          sed '/depends=/!b; :a; n; a\    python-empy' PKGBUILD
+          sed -i '/depends=/!b; :a; n; a\    python-empy' PKGBUILD
 
       - name: Update github
         shell: bash
