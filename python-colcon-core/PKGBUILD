@@ -18,7 +18,6 @@ depends=(
     python-distlib
     python-notify2
     python-empy3
-    python-empy
 )
 makedepends=(
     python-setuptools
