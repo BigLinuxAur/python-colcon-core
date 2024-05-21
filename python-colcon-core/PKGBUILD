@@ -10,7 +10,6 @@ url="https://colcon.readthedocs.io/en/released/"
 license=('Apache')
 depends=(
     python-pytest
-    python-empy
     python-pytest-runner
     python-pytest-rerunfailures
     python-pytest-repeat
@@ -22,7 +21,6 @@ depends=(
 )
 makedepends=(
     python-setuptools
-    python-empy
     python-build
     python-installer
     python-wheel
