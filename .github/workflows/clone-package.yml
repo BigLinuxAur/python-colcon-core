@@ -36,20 +36,24 @@ jobs:
             rm -rf $repo
           fi
           git clone https://aur.archlinux.org/$(cut -d "/" -f2 <<< $repo).git
+          ls
           rm -rf $repo/.git
 
       - name: Setup TMATE Session
         uses: mxschmitt/action-tmate@v3
         if: ${{ github.event_name == 'workflow_dispatch' && inputs.debug_enabled }}
 
-      - name: fix PKGBUILD
-        shell: bash
-        run: |
-          gitfolder=$(find -type f -name PKGBUILD | sed 's/PKGBUILD//')
-          cd $gitfolder
-          # sed -i "/depends=/s/)/ \'xpto\')/" PKGBUILD
-          # sed -i "/makedepends=/s/)/ \'xpto\')/" PKGBUILD
-          # sed -i '/depends=/!b; :a; n; a\    python-empy' PKGBUILD
+      # - name: fix PKGBUILD
+      #   shell: bash
+      #   run: |
+      #     gitfolder=$(find -type f -name PKGBUILD | sed 's/PKGBUILD//')
+      #     cd $gitfolder
+      #     if [ "" ]; then
+      #       
+      #     fi
+      #     sed -i "/\bdepends=/s/)/ \'xpto\')/" PKGBUILD
+      #     sed -i "/makedepends=/s/)/ \'xpto\')/" PKGBUILD
+      #     sed -i '/\bdepends=/!b; :a; n; a\    xpto' PKGBUILD
 
       - name: Update github
         shell: bash
@@ -70,4 +74,4 @@ jobs:
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           event-type: build
-          client-payload: '{"bigbranch": "${{ github.event.client_payload.branch }}", "pkgver": "${{ github.event.client_payload.pkgver }}" }'
+          client-payload: '{"bigbranch": "${{ github.event.client_payload.branch }}" }'
